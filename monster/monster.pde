@@ -1,20 +1,31 @@
 int x;
-
+int spin;
+int spiny;
+int vx = 2;
 
 void setup() {
   size(600, 600);
 }
 
 void draw() {
-  monster(x, 0);
-
-  x = x + 1;
-  background(0, 0, 255);
+  background(75, 194, 240);
+  monster(x, 0, spin);
+  spin = spin + spiny;
+  x = x + vx;
+  if (x > 500){
+    vx = -4   ;
+    spiny = 1;
+  }  
+  if (x < 80) {
+      vx = 4;
+   
+  }
 }
 
-void monster(int x, int y){
+void monster(int x, int y, int angle){
 pushMatrix();
 translate(x, 300);
+rotate(radians(angle));
 noStroke();
 
 //feet left
