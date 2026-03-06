@@ -39,8 +39,8 @@ void ice (float x, float y, float big) {
   translate(x, y);
   scale(big);
 //shadow
-  fill(190);
-  ellipse(0, 20, 350, 250);
+  fill(152, 180, 198);
+  ellipse(-7, 10, 360, 260);
 //ice
   fill(245);
   ellipse(0, 0, 350, 250);
@@ -48,9 +48,16 @@ void ice (float x, float y, float big) {
 
 pushMatrix();
 translate(140, 650);
-strokeWeight(2);
-stroke(98, 179, 232);
-quad(180, -160, 70, -80, 40, 400, 220, 400);  
+
+fill(162, 195, 216);
+quad(61, -101, 1, -101, 10, 300, 61, 300);
+fill(127, 164, 188);
+triangle(71, -101, 41, -101, 71, 200);
+fill(240);
+quad(180, -160, 70, -100, 20, 400, 220, 400);  
+fill(140, 186, 216);
+quad(181, -160, 71, -100, -200, -20, -200, -120); 
+quad(181, -160, 120, -179, 0, -163, -120, -120);
 popMatrix();
 
 }
