@@ -91,7 +91,25 @@ pushMatrix();
 translate(450, 200);
 stroke(0);
 fill(255);
+
 ellipse(0, 0, 220, 150);
+//ear behind
+ellipse(60, -90, 30, 30);
+//head
+ellipse(90, -60, 85, 85);
+//ear in front
+ellipse(120, -90, 30, 30);
+noStroke();
+ellipse(119, -88, 30, 30);
+//nose
+stroke(0);
+fill(255);
+ellipse(125, -50, 23, 25);
+fill(0);
+ellipse(128, -48, 15, 10);
+//eyes
+circle(130, -67, 7);
+circle(100, -67, 7);
 popMatrix();
 
 }
