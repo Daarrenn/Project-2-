@@ -92,7 +92,22 @@ translate(450, 200);
 stroke(0);
 fill(255);
 
-ellipse(0, 0, 220, 150);
+//leg front behind
+fill(255);
+rect(60, 16, 40, 75, 90);
+ellipse(86, 81, 35, 20);
+noStroke();
+rect(61, 17, 38, 73, 90);
+stroke(0);
+//leg behind behind
+fill(255);
+rect(-80, 16, 40, 75, 90);
+ellipse(-54, 81, 35, 20);
+noStroke();
+rect(-79, 17, 38, 73, 90);
+stroke(0);
+//body
+ellipse(7, 0, 200, 125);
 //ear behind
 ellipse(60, -90, 30, 30);
 //head
@@ -110,6 +125,25 @@ ellipse(128, -48, 15, 10);
 //eyes
 circle(130, -67, 7);
 circle(100, -67, 7);
-popMatrix();
+//leg front front
+fill(255);
+rect(50, 26, 40, 75, 90);
+ellipse(76, 91, 35, 20);
+noStroke();
+rect(51, 27, 38, 73, 90);
+stroke(0);
+//leg behind front
+fill(255);
+rect(-90, 26, 40, 75, 90);
+ellipse(-64, 91, 35, 20);
+noStroke();
+rect(-89, 27, 38, 73, 90);
 
+
+
+
+
+
+
+popMatrix();
 }
