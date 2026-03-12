@@ -1,9 +1,8 @@
 float x;
 int y;
-float big = 1;
-
-
-
+float bigice = 1;
+float bigbear = 1;
+float bigcloud = 1;
 
 void setup() {
 size(900, 900);
@@ -18,47 +17,14 @@ void draw() {
   fill(90, 138, 190);
   rect(0, 350, 900, 550);
   ice(700, 510, 1);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-void ice (float x, float y, float big) {
-  
-  noStroke();
-  pushMatrix();
-  translate(x, y);
-  scale(big);
-//shadow
-  fill(152, 180, 198);
-  ellipse(-3, 12, 360, 260);
-//ice
-  fill(240, 249, 255);
-  ellipse(0, 0, 350, 250);
-  popMatrix();
-
-//cloud
-pushMatrix();
-translate(200, 200);
-fill(255);
-ellipse(0, 0, 100, 100);
-ellipse(50, 20, 60, 60);
-ellipse(-65, 14, 72, 72);
-ellipse(-100, 30, 40, 40);
-rect(-100, 30, 150, 20);
-popMatrix();
-
-
-
+  bear(680, 470, 1);
+  ice(750, 760, 0.7);
+  ice(500, 820, 0.5);
+  cloud(100, 100, 1);
+  cloud(300, 200, 1.3);
+  cloud(400, 75, 0.8);
+  cloud(700, 150, 1.6);
+  cloud(900, 85, 0.6);
 
 //big iceberg
 pushMatrix();
@@ -83,12 +49,27 @@ quad(181, -160, 71, -100, -200, -20, -200, -120);
 quad(181, -160, 120, -179, 0, -163, -120, -120);
 popMatrix();
 
+}
 
+void ice (float x, float y, float bigice) {
+  
+  noStroke();
+  pushMatrix();
+  translate(x, y);
+  scale(bigice);
+//shadow
+  fill(152, 180, 198);
+  ellipse(-3, 12, 360, 260);
+//ice
+  fill(240, 249, 255);
+  ellipse(0, 0, 350, 250);
+  popMatrix();
+}
 
-
-//polar bear
-pushMatrix();
-translate(450, 200);
+void bear(float x, float y, float bigbear) {
+  pushMatrix();
+translate(x, y);
+scale(bigbear);
 stroke(0);
 fill(255);
 
@@ -139,11 +120,18 @@ ellipse(-64, 91, 35, 20);
 noStroke();
 rect(-89, 27, 38, 73, 90);
 
+popMatrix();
+}
 
-
-
-
-
-
+void cloud(float x, float y, float bigcloud) {
+pushMatrix();
+translate(x, y);
+scale(bigcloud);
+fill(255);
+ellipse(0, 0, 100, 100);
+ellipse(50, 20, 60, 60);
+ellipse(-65, 14, 72, 72);
+ellipse(-100, 30, 40, 40);
+rect(-100, 30, 150, 20);
 popMatrix();
 }
