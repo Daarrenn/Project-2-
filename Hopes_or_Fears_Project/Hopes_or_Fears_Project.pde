@@ -3,6 +3,9 @@ int y;
 float bigice = 1;
 float bigbear = 1;
 float bigcloud = 1;
+float bergx = 1;
+float bergy = 1;
+float waterlevel;
 
 void setup() {
 size(900, 900);
@@ -15,7 +18,8 @@ noStroke();
 void draw() {
   background(154, 220, 250);
   fill(90, 138, 190);
-  rect(0, 350, 900, 550);
+  rect(0, 350-waterlevel, 900, 800);
+  waterlevel = waterlevel + 0.03;
   ice(700, 510, 1);
   bear(680, 470, 1);
   ice(750, 760, 0.7);
@@ -25,10 +29,14 @@ void draw() {
   cloud(400, 75, 0.8);
   cloud(700, 150, 1.6);
   cloud(900, 85, 0.6);
+  iceberg(bergx, bergy);
+  bergx = bergx + 0.15;
+  bergy = bergy + 0.2;
+}
 
-//big iceberg
+void iceberg(float bergx, float bergy){
 pushMatrix();
-translate(140, 650);
+translate(140 - bergx, 650 + bergy);
 //leftmost shadow
 rect(-200, -100, 150, 500);
 //light shadow
