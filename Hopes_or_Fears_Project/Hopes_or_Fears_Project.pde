@@ -24,11 +24,13 @@ void draw() {
   background(154, 220, 250);
   fill(90, 138, 190);
   rect(0, 350-waterlevel, 900, 1200);
+  ice(700, 510, icesize1);
   waterlevel = waterlevel + 0.032;
   icesize1 = icesize1 - icedecrease;
   if (icesize1 < 0.6){
     icedecrease = 0;
     bearexistance = 0;
+    waterbear(472, 505);
   }
   icesize2 = icesize2 - 0.0004;
   if (icesize2 < 0.05){
@@ -38,7 +40,6 @@ void draw() {
   if (icesize3 < 0.05){
     icesize3 = 0;
   }
-  ice(700, 510, icesize1);
   bear(680, 470, bearexistance);
   ice(750, 760, icesize2);
   ice(500, 820, icesize3);
@@ -50,43 +51,6 @@ void draw() {
   iceberg(bergx, bergy);
   bergx = bergx + 0.1;
   bergy = bergy + 0.15;
-
-pushMatrix();
-translate(300, 300);
-stroke(0);
-fill(255);
-//body
-ellipse(70, 50, 125, 200);
-//ear behind
-ellipse(60, -90, 30, 30);
-//head
-ellipse(90, -60, 85, 85);
-//ear in front
-ellipse(120, -90, 30, 30);
-noStroke();
-ellipse(119, -88, 30, 30);
-//nose
-stroke(0);
-fill(255);
-ellipse(125, -50, 23, 25);
-fill(0);
-ellipse(128, -48, 15, 10);
-//eyes
-circle(130, -67, 7);
-circle(100, -67, 7);
-
-pushMatrix();
-translate(100, 40);
-rotate(radians(270));
-fill(255);
-rect(0, 0, 40, 75, 90);
-ellipse(26, 65, 35, 20);
-noStroke();
-rect(1, 1, 38, 73, 90);
-stroke(0);
-popMatrix();
-
-popMatrix();
 }
 
 void iceberg(float bergx, float bergy){
@@ -184,6 +148,60 @@ rect(-90, 26, 40, 75, 90);
 ellipse(-64, 91, 35, 20);
 noStroke();
 rect(-89, 27, 38, 73, 90);
+
+popMatrix();
+}
+
+void waterbear(float x, int y) {
+pushMatrix();
+translate(x, y);
+stroke(0);
+fill(255);
+//behind leg
+pushMatrix();
+translate(90, 30);
+rotate(radians(270));
+fill(255);
+rect(0, 0, 40, 75, 90);
+ellipse(26, 65, 35, 20);
+noStroke();
+rect(1, 1, 38, 73, 90);
+stroke(0);
+popMatrix();
+//body
+ellipse(70, 50, 125, 200);
+//ear behind
+ellipse(60, -90, 30, 30);
+//head
+ellipse(90, -60, 85, 85);
+//ear in front
+ellipse(120, -90, 30, 30);
+noStroke();
+ellipse(119, -88, 30, 30);
+//nose
+stroke(0);
+fill(255);
+ellipse(125, -50, 23, 25);
+fill(0);
+ellipse(128, -48, 15, 10);
+//eyes
+circle(130, -67, 7);
+circle(100, -67, 7);
+//front leg
+pushMatrix();
+translate(100, 40);
+rotate(radians(270));
+fill(255);
+rect(0, 0, 40, 75, 90);
+ellipse(26, 65, 35, 20);
+noStroke();
+rect(1, 1, 38, 73, 90);
+stroke(0);
+popMatrix();
+//water
+noStroke();
+fill(90, 138, 190);
+rect(-10, 80, 150, 100);
 
 popMatrix();
 }
