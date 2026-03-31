@@ -6,6 +6,11 @@ float bigcloud = 1;
 float bergx = 1;
 float bergy = 1;
 float waterlevel;
+float icesize1 = 1;
+float icedecrease = 0.0004;
+float icesize2 = 0.7;
+float icesize3 = 0.5;
+float bearexistance = 1;
 
 void setup() {
 size(900, 900);
@@ -18,20 +23,70 @@ noStroke();
 void draw() {
   background(154, 220, 250);
   fill(90, 138, 190);
-  rect(0, 350-waterlevel, 900, 800);
-  waterlevel = waterlevel + 0.03;
-  ice(700, 510, 1);
-  bear(680, 470, 1);
-  ice(750, 760, 0.7);
-  ice(500, 820, 0.5);
+  rect(0, 350-waterlevel, 900, 1200);
+  waterlevel = waterlevel + 0.032;
+  icesize1 = icesize1 - icedecrease;
+  if (icesize1 < 0.6){
+    icedecrease = 0;
+    bearexistance = 0;
+  }
+  icesize2 = icesize2 - 0.0004;
+  if (icesize2 < 0.05){
+    icesize2 = 0;
+  }
+  icesize3 = icesize3 - 0.0004;
+  if (icesize3 < 0.05){
+    icesize3 = 0;
+  }
+  ice(700, 510, icesize1);
+  bear(680, 470, bearexistance);
+  ice(750, 760, icesize2);
+  ice(500, 820, icesize3);
   cloud(100, 100, 1);
   cloud(300, 200, 1.3);
   cloud(400, 75, 0.8);
   cloud(700, 150, 1.6);
   cloud(900, 85, 0.6);
   iceberg(bergx, bergy);
-  bergx = bergx + 0.15;
-  bergy = bergy + 0.2;
+  bergx = bergx + 0.1;
+  bergy = bergy + 0.15;
+
+pushMatrix();
+translate(300, 300);
+stroke(0);
+fill(255);
+//body
+ellipse(70, 50, 125, 200);
+//ear behind
+ellipse(60, -90, 30, 30);
+//head
+ellipse(90, -60, 85, 85);
+//ear in front
+ellipse(120, -90, 30, 30);
+noStroke();
+ellipse(119, -88, 30, 30);
+//nose
+stroke(0);
+fill(255);
+ellipse(125, -50, 23, 25);
+fill(0);
+ellipse(128, -48, 15, 10);
+//eyes
+circle(130, -67, 7);
+circle(100, -67, 7);
+
+pushMatrix();
+translate(100, 40);
+rotate(radians(270));
+fill(255);
+rect(0, 0, 40, 75, 90);
+ellipse(26, 65, 35, 20);
+noStroke();
+rect(1, 1, 38, 73, 90);
+stroke(0);
+popMatrix();
+
+popMatrix();
 }
 
 void iceberg(float bergx, float bergy){
@@ -55,8 +110,8 @@ quad(180, -160, 70, -100, 20, 400, 220, 400);
 fill(140, 186, 216);
 quad(181, -160, 71, -100, -200, -20, -200, -120); 
 quad(181, -160, 120, -179, 0, -163, -120, -120);
+noStroke();
 popMatrix();
-
 }
 
 void ice (float x, float y, float bigice) {
@@ -74,8 +129,10 @@ void ice (float x, float y, float bigice) {
   popMatrix();
 }
 
+
+
 void bear(float x, float y, float bigbear) {
-  pushMatrix();
+pushMatrix();
 translate(x, y);
 scale(bigbear);
 stroke(0);
